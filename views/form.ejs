@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/public/css/styles.css">
+    <title>Formulário</title>
+</head>
+<body>
+    <h1>Escola Virtual</h1>
+    <h2>Formulário de Pré-Matrícula</h2>
+
+    <% if (errors && errors.length > 0) { %>
+        <ul>
+            <% errors.forEach(error => { %>
+                <li style="color: red;"><%= error.msg %></li>
+            <% }); %>
+        </ul>
+    <% } %>
+    
+    <form action="/enviar" method="POST">
+        <fieldset>
+            <legend>Dados Pessoais:</legend>
+            Nome do Aluno: <input type="text" name="nomeAluno"><br><br>
+            Nascimento (dd/mm/aaaa): <input type="text" name="nascimento"><br><br>
+            Nome da Mãe: <input type="text" name="nomeMae"><br><br>
+            Nome do Pai: <input type="text" name="nomePai"><br><br>
+            Telefone: DDD <input type="text" name="ddd" maxlength="2"> Tel: <input type="text" name="telefone"> Ramal: <input type="text" name="ramal"><br><br>
+            E-mail: <input type="email" name="email"><br><br>
+        </fieldset>
+        
+        <fieldset>
+            <legend>Informações de Matrícula:</legend>
+            Série: 
+            <select name="serie">
+                <option value="pre-escolar">pré-escolar</option>
+            </select><br><br>
+            Turno: 
+            <input type="radio" name="turno" value="manha"> Manhã
+            <input type="radio" name="turno" value="tarde"> Tarde<br><br>
+            Atividades Extracurriculares:<br>
+            <input type="checkbox" name="atividades" value="informatica"> Informática<br>
+            <input type="checkbox" name="atividades" value="musica"> Música<br>
+            <input type="checkbox" name="atividades" value="ballet"> Balet<br>
+            <input type="checkbox" name="atividades" value="pintura"> Pintura<br>
+            <input type="checkbox" name="atividades" value="judo"> Judô<br>
+            <input type="checkbox" name="atividades" value="futebol"> Futebol<br><br>
+        </fieldset>
+
+        <button type="submit">Enviar Formulário</button>
+        <button type="reset">Limpar Campos</button>
+    </form>
+</body>
+</html>
