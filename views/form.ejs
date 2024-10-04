@@ -1,54 +1,153 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/public/css/styles.css">
     <title>Formulário</title>
 </head>
+<style>
+    body {
+        font-family: 'Times New Roman', Times, serif;
+        margin: 0;
+        padding: 0;
+        background-color: #f0f0f0;
+    }
+
+    h1 {
+        text-align: center;
+        background-color: #333;
+        color: white;
+        padding: 10px;
+        margin: 0;
+    }
+
+    h2 {
+        text-align: center;
+        margin: 0;
+        padding: 10px;
+    }
+
+    form {
+        width: 50%;
+        margin: 0 auto;
+        padding: 20px;
+        background-color: white;
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    fieldset {
+        display: flex;
+        margin-bottom: 20px;
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+    }
+
+    legend {
+        font-weight: bold;
+    }
+
+    input[type="text"],
+    input[type="email"] {
+        padding: 5px;
+        width: 50%;
+        margin-bottom: 10px;
+    }
+
+    input[type="radio"],
+    input[type="checkbox"] {
+        margin-bottom: 10px;
+    }
+
+    select {
+        padding: 5px;
+        margin-bottom: 10px;
+    }
+
+    button {
+        padding: 10px;
+        background-color: #333;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+
+    button[type="submit"] {
+        margin-right: 10px;
+    }
+
+    button[type="reset"] {
+        background-color: #ccc;
+    }
+
+    ul {
+        list-style: none;
+        padding: 0;
+    }
+
+    li {
+        margin-bottom: 5px;
+    }
+</style>
+
 <body>
     <h1>Escola Virtual</h1>
     <h2>Formulário de Pré-Matrícula</h2>
 
-    <% if (errors && errors.length > 0) { %>
+    <% if (errors && errors.length> 0) { %>
         <ul>
-            <% errors.forEach(error => { %>
-                <li style="color: red;"><%= error.msg %></li>
-            <% }); %>
+            <% errors.forEach(error=> { %>
+                <li style="color: red;">
+                    <%= error.msg %>
+                </li>
+                <% }); %>
         </ul>
-    <% } %>
-    
-    <form action="/enviar" method="POST">
-        <fieldset>
-            <legend>Dados Pessoais:</legend>
-            Nome do Aluno: <input type="text" name="nomeAluno"><br><br>
-            Nascimento (dd/mm/aaaa): <input type="text" name="nascimento"><br><br>
-            Nome da Mãe: <input type="text" name="nomeMae"><br><br>
-            Nome do Pai: <input type="text" name="nomePai"><br><br>
-            Telefone: DDD <input type="text" name="ddd" maxlength="2"> Tel: <input type="text" name="telefone"> Ramal: <input type="text" name="ramal"><br><br>
-            E-mail: <input type="email" name="email"><br><br>
-        </fieldset>
-        
-        <fieldset>
-            <legend>Informações de Matrícula:</legend>
-            Série: 
-            <select name="serie">
-                <option value="pre-escolar">pré-escolar</option>
-            </select><br><br>
-            Turno: 
-            <input type="radio" name="turno" value="manha"> Manhã
-            <input type="radio" name="turno" value="tarde"> Tarde<br><br>
-            Atividades Extracurriculares:<br>
-            <input type="checkbox" name="atividades" value="informatica"> Informática<br>
-            <input type="checkbox" name="atividades" value="musica"> Música<br>
-            <input type="checkbox" name="atividades" value="ballet"> Balet<br>
-            <input type="checkbox" name="atividades" value="pintura"> Pintura<br>
-            <input type="checkbox" name="atividades" value="judo"> Judô<br>
-            <input type="checkbox" name="atividades" value="futebol"> Futebol<br><br>
-        </fieldset>
+        <% } %>
 
-        <button type="submit">Enviar Formulário</button>
-        <button type="reset">Limpar Campos</button>
-    </form>
+            <form action="/enviar" method="POST">
+                <fieldset style="flex-direction: column">
+                    <legend>Dados Pessoais:</legend>
+                    <span>Nome do Aluno: <input type="text" name="nomeAluno"></span>
+                    <span>Nascimento (dd/mm/aaaa): <input type="text" name="nascimento"></span>
+                    <span>Nome da Mãe: <input type="text" name="nomeMae"></span>
+                    <span>Nome do Pai: <input type="text" name="nomePai"></span>
+                    <span>Telefone: DDD (<input style="width: 25px;" type="text" name="ddd" maxlength="2">) Tel: <input
+                            style="width: 60px" type="text" name="telefone"> Ramal: <input style="width:30px"
+                            type="text" name="ramal"></span>
+                    <span>E-mail: <input type="email" name="email"></span>
+                </fieldset>
+
+                <fieldset style="display: flex;">
+                    <legend>Informações de Matrícula:</legend>
+                    <span style="margin-right: 10px;">
+                        Série:
+                        <select name="serie">
+                            <option value="pre-escolar">pré-escolar</option>
+                        </select><br><br>
+                    </span>
+                    <span style="margin-right: 10px;">
+                        Turno:
+                        <input type="radio" name="turno" value="manha"> Manhã
+                        <input type="radio" name="turno" value="tarde"> Tarde<br><br>
+                    </span>
+                    <span style="margin-top: 2px;">Atividades Extracurriculares:<br>
+                        <input type="checkbox" name="atividades" value="informatica"> Informática<br>
+                        <input type="checkbox" name="atividades" value="musica"> Música<br>
+                        <input type="checkbox" name="atividades" value="ballet"> Balet<br>
+                        <input type="checkbox" name="atividades" value="pintura"> Pintura<br>
+                        <input type="checkbox" name="atividades" value="judo"> Judô<br>
+                        <input type="checkbox" name="atividades" value="futebol"> Futebol<br><br>
+                    </span>
+                </fieldset>
+                <span style="display: flex; align-items: center; justify-content: center;">
+                    <button type="submit">Enviar Formulário</button>
+                    <button type="reset">Limpar Campos</button>
+                </span>
+            </form>
 </body>
+
 </html>
