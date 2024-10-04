@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Erro no Formulário</title>
+</head>
+<style>
+    body {
+        font-family: 'Times New Roman', Times, serif;
+        margin: 0;
+        padding: 0;
+        background-color: #f0f0f0;
+    }
+
+    h1 {
+        text-align: center;
+        background-color: #333;
+        color: white;
+        padding: 10px;
+        margin: 0;
+    }
+
+    ul {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+    }
+
+    button {
+        padding: 10px;
+        background-color: #333;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+
+    div {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        margin-top: 50px;
+    }
+
+    p {
+        font-size: 1.2em;
+        margin-bottom: 10px;
+    }
+
+    span {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-top: 20px;
+    }
+</style>
+
+<body>
+    <h1>Erro ao enviar o formulário</h1>
+    <div>
+        <p>Houve problemas com os seguintes campos:</p>
+        <ul>
+            <% errors.forEach(error=> { %>
+                <li>
+                    <%= error.msg %>
+                </li>
+                <% }); %>
+        </ul>
+    </div>
+    <span>
+        <button onclick="window.history.back()">Voltar ao formulário</button>
+    </span>
+</body>
+
+</html>
